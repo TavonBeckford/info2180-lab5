@@ -8,7 +8,7 @@ $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 $pdo = new PDO($dsn,$username,$password);
 
 $context = $_GET['context'];
-$countryName = htmlspecialchars($_GET['countryName']); // Sanitization
+$countryName = htmlspecialchars($_GET['countryName']); // Sanitizing query input
 
 $querystmt = "";
 
@@ -25,7 +25,6 @@ if($context == "cities"){
 $countryName = $context == "cities" ? $countryName : "%$countryName%";
 $stmt->bindParam(":countryName", $countryName);
 $stmt->execute();
-
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
