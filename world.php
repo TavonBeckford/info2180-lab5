@@ -1,17 +1,34 @@
 <?php
 $host = 'localhost';
 $username = 'lab5_user';
-$password = '';
+$password = 'password123';
 $dbname = 'world';
+$dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 
-$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$stmt = $conn->query("SELECT * FROM countries");
+$pdo = new PDO($dsn,$username,$password);
+
+$context = $_GET['context'];
+$countryName = htmlspecialchars($_GET['countryName']); // Sanitization
+
+$querystmt = "";
+
+// Determine context
+if($context == "cities"){
+	$stmt = $pdo->prepare("SELECT ci.name, ci.district, ci.population 
+		FROM cities ci INNER JOIN countries co 
+		ON ci.country_code=co.code WHERE co.name=:countryName");
+}else{
+	$stmt = $pdo->prepare("SELECT name, continent, independence_year, head_of_state FROM countries WHERE name LIKE :countryName");
+}
+
+// Querying database
+$countryName = $context == "cities" ? $countryName : "%$countryName%";
+$stmt->bindParam(":countryName", $countryName);
+$stmt->execute();
+
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+exit(json_encode($results));
 ?>
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+

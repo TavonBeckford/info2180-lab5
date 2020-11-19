@@ -8,25 +8,31 @@
 		<link href="world.css" type="text/css" rel="stylesheet" />
 
 		<!-- you write this -->
-		<script src="world.js" type="text/javascript"></script>
+		<script src="world.js" type="text/javascript"></script> 
+
 	</head>
 
 	<body>
-		<header>
-			<h1>World Database Lookup</h1>
-		</header>
+		<div id="wrapper">
+			<header>
+				<h1>World Database Lookup</h1>
+				<img src="undraw_connected_world_wuay.svg" alt="WorldImage">
+			</header>
 
-		<main>
-			<div id="controls">
-				<label for="country">Country:</label>
-				<input id="country" type="search" name="country" placeholder="Enter country name" />
-				<button id="lookup">Lookup</button>
-			</div>
-			
-			<div id="result">
-				<!-- countries will appear here -->
-			</div>
-		</main>
+			<main>
+				<div id="controls">
+					<input id="country" type="search" name="country" placeholder="Enter country name" />
+					<div id="button_group">
+						<button id="country_lookup">Lookup Country</button>
+						<button id="city_lookup">Lookup Cities</button>
+					</div>
+				</div>
+				
+				<div id="result">
+					<!-- countries will appear here -->
+				</div>
+			</main>
+		</div>
 
 	</body>
 </html>

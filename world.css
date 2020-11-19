@@ -1,1 +1,62 @@
-/* Add your own styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body{
+	background-color: #dcebf4;
+}
+
+#wrapper{
+	display: grid;
+	grid-gap: 1rem;
+}
+
+header{
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+	grid-row: 1;
+	padding: 25px 50px;
+	background-color: #28c4cf;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+header img{
+	height: 100px;
+	width: 100px;
+}
+
+main{
+	display: grid;
+	grid-gap: 25px;
+	grid-row: 2;
+}
+
+#controls{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+}
+
+#country{
+	border: none;
+	width: 60%;
+	padding: 0.5rem;
+	border-radius: 5px;
+}
+
+#button_group{
+	margin-top: 0.5rem;
+}
+
+#result{
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+}
